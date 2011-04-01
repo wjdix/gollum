@@ -29,7 +29,7 @@ to install the dependencies for the formats that you plan to use.
 
 * [ASCIIDoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
 * [Creole](http://wikicreole.org/) -- `gem install creole`
-* [Markdown](http://daringfireball.net/projects/markdown/) -- `gem install rdiscount`
+* [Markdown](http://daringfireball.net/projects/markdown/) -- `gem install redcarpet`
 * [Org](http://orgmode.org/) -- `gem install org-ruby`
 * [Pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML` comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 * [RDoc](http://rdoc.sourceforge.net/)

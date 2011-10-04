@@ -182,6 +182,17 @@ module Precious
       show_page_or_file(params[:splat].first)
     end
 
+    delete '/*' do
+      name = params[:splat].first
+      wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
+      if page = wiki.page(name)
+        wiki.delete_page(page, {})
+        redirect '/Home'
+      else
+        halt 404
+      end
+    end
+
     def show_page_or_file(name)
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
       if page = wiki.page(name)

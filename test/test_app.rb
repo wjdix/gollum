@@ -138,6 +138,18 @@ context "Frontend" do
     assert_equal page1.version.sha, page2.version.sha
   end
 
+  test "delete existing page" do
+    page1 = @wiki.page('A')
+
+    delete "/A"
+    follow_redirect!
+    assert_equal '/Home', last_request.fullpath
+    assert last_response.ok?
+
+    @wiki.clear_cache
+    assert_nil @wiki.page('A') 
+  end
+
   def app
     Precious::App
   end

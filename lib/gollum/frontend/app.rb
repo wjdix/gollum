@@ -43,7 +43,7 @@ module Precious
     end
 
     get '/edit/*' do
-      @name = params[:splat].first
+      @name = CGI.unescape(params[:splat].first)
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
       if page = wiki.page(@name)
         @page = page
@@ -179,11 +179,11 @@ module Precious
     end
 
     get '/*' do
-      show_page_or_file(params[:splat].first)
+      show_page_or_file(CGI.unescape(params[:splat].first))
     end
 
     delete '/*' do
-      name = params[:splat].first
+      name = CGI.unescape(params[:splat].first)
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
       if page = wiki.page(name)
         wiki.delete_page(page, {})

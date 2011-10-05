@@ -56,7 +56,7 @@ module Precious
 
     post '/edit/*' do
       wiki = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
-      page = wiki.page(params[:splat].first)
+      page = wiki.page(CGI.unescape(params[:splat].first))
       name = params[:rename] || page.name
       committer = Gollum::Committer.new(wiki, commit_message)
       commit    = {:committer => committer}
